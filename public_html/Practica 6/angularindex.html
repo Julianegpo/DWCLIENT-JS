@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Structure data</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="lib/js/angular.min.js" type="text/javascript"></script>
+        <script src="lib/js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script src="lib/js/bootstrap.js" type="text/javascript"></script>
+        <script src="lib/js/npm.js" type="text/javascript"></script>
+        <link href="lib/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/css/basic.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="page-header">
+            <h3>
+                <center>
+                    <strong>JS structure data</strong>
+                </center>
+            </h3>
+        </header>
+        
+        <div ng-app="app" ng-controller="mainController" 
+             class="container col-lg-12 row-lg-12">
+
+            <div class="col-lg-6 row-lg-6">
+                <center>
+                    <strong>Test</strong>
+                </center>
+                <div id="cristian" class="row-lg-12 col-lg-12">
+                    <div ng-repeat="number in numbers">{{number}}</div>
+                </div>
+
+                <div class="col-lg-3 row-lg-3">
+                    <div ng-click="firstAndLastNumberFunc()" class="btn btn-info">
+                        First and last number
+                    </div>
+                    <div ng-click="calculateFunc()" class="btn btn-info">
+                        Calculate
+                    </div>
+                </div>
+
+                <div class="col-lg-3 row-lg-3">
+                    <div ng-click="addLastNumberFunc()" class="btn btn-warning">
+                        Add last number
+                    </div>
+                    <div ng-click="addFirsttNumberFunc()" class="btn btn-warning">
+                        Add first number
+                    </div>
+                </div>
+
+                <div class="col-lg-3 row-lg-3">
+                    <div ng-click="removeLastNumberFunc()" class="btn btn-danger">
+                        Remove last number
+                    </div>
+                    <div ng-click="removeFirstNumberFunc()" class="btn btn-danger">
+                        Remove first number
+                    </div>
+                </div>
+
+                <div class="col-lg-3 row-lg-3">
+                    <div ng-click="removePositionFunc()" class="btn btn-danger">
+                        Remove a position
+                    </div>
+                    <div ng-click="removeSpecificNumber()" class="btn btn-danger">
+                        Remove specific number
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 row-lg-6">
+                <center>
+                    <strong>Results</strong>
+                </center>
+                <div>
+                    <div>
+                        <strong>First number of array:</strong> {{first}}
+                    </div>
+                    <div>
+                        <strong>Last number of array:</strong> {{last}}
+                    </div>
+                    <div>
+                        <strong>Result of operator ({{operator}}):</strong> {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
