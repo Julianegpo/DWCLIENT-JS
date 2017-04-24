@@ -19,7 +19,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('suscribed', {
                 parent: 'app',
-                url: '/suscribed',
+                url: '^/suscribed',
                 views: {
                     'content@': {
                         templateUrl: 'suscribedLists.html'
@@ -28,7 +28,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('about', {
                 parent: 'app',
-                url: '/about',
+                url: '^/about',
                 views: {
                     'content@': {
                         templateUrl: 'aboutMe.html'
@@ -37,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('search', {
                 parent: 'app',
-                url: '/search',
+                url: '^/search',
                 views: {
                     'content@': {
                         templateUrl: 'searchList.html'
@@ -45,5 +45,4 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             })
     $urlRouterProvider.otherwise('/');
-
 });
