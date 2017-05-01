@@ -67,7 +67,16 @@ window.onload = function () {
     
     document.getElementById("comprobar").
             addEventListener("click", comprobarCookie, false);
-    document.getElementById("nombrePagina").addEventListener("click", cambiarNombrePagina, false);
+    document.getElementById("nombrePagina").
+            addEventListener("click", cambiarNombrePagina, false);
+    document.getElementById("ventana").
+            addEventListener("click", crearVentanaNueva, false);
+    
+    setTimeout(
+            function(){
+                var cookie = getCookie("nombre");
+                console.log(cookie);
+            }, 5000);
 }
 
 function comprobarCookie (){
@@ -87,4 +96,15 @@ function cambiarNombrePagina(){
     } while (nombrePag == null || nombrePag == "");
     nombrePag.toUpperCase();
     document.title=nombrePag;
+}
+
+function crearVentanaNueva(){
+    var valores;
+    do{
+        valores = window.prompt("Introduce 2 números: ");
+        var valor1 = valores.split(",")[0];
+        var valor2 = valores.split(",")[1];
+    }while(valor1 < 200 || valor1 > 800 || valor2 < 200 || valor2 > 800);
+    
+    window.open("http://localhost:8383/DWCLIEN/Practica%2015/ventana.html", "nuevo", "width="+valor1+", height="+valor2+"");
 }
