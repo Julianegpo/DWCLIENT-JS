@@ -1,3 +1,4 @@
+var cookie = document.cookie="";
 window.onload = function () {
     var contenedor = document.getElementById("listaPropiedades");
 
@@ -63,4 +64,27 @@ window.onload = function () {
     lista.appendChild(random);
     lista.appendChild(nombrePagina);
     lista.appendChild(OSName);
+    
+    document.getElementById("comprobar").
+            addEventListener("click", comprobarCookie, false);
+    document.getElementById("nombrePagina").addEventListener("click", cambiarNombrePagina, false);
+}
+
+function comprobarCookie (){
+    if(cookie==""){
+        var nombre = window.prompt("Introduce tu nombre de usuario: ")
+        cookie = "nombre="+nombre;
+        console.log(cookie);
+    }
+    var div = document.createElement("div");
+    div.innerHTML="Valor de la cookie: "+cookie;
+    document.getElementById("valorCookie").appendChild(div);
+}
+function cambiarNombrePagina(){
+    var nombrePag;
+    do {
+        nombrePag=window.prompt("Introduce el nuevo nombre de la página:");        
+    } while (nombrePag == null || nombrePag == "");
+    nombrePag.toUpperCase();
+    document.title=nombrePag;
 }
