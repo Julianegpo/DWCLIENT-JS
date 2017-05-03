@@ -1,4 +1,4 @@
-var cookie = document.cookie="";
+//var cookie = document.cookie="";
 var contenedor = document.getElementById("listaPropiedades");
 window.onload = function () {
 
@@ -74,12 +74,12 @@ window.onload = function () {
 }
 
 function comprobarCookie (){
-    if(cookie==""){
+    if(getCookie("nombre") == ""){
         var nombre = window.prompt("Introduce tu nombre de usuario: ")
-        cookie = "nombre="+nombre;
+        setCookie("nombre", nombre, 4);
     }
     var div = document.createElement("div");
-    div.innerHTML="Valor de la cookie: "+cookie;
+    div.innerHTML="Valor de la cookie: "+getCookie("nombre");
     document.getElementById("valorCookie").appendChild(div);
 }
 function cambiarNombrePagina(){
@@ -107,4 +107,22 @@ function cargarMensaje(){
     div.innerHTML="Ventana emergente cargada";
     strong.appendChild(div);
     contenedor.appendChild(strong);
+}
+
+function setCookie(clave, valor, diasexpiracion) {
+    var d = new Date();
+    d.setTime(d.getTime() + (diasexpiracion*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = clave + "=" + valor + "; " + expires;
+}
+
+function getCookie(clave) {
+    var name = clave + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
 }

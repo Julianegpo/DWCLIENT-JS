@@ -2,25 +2,24 @@ var ventanaPadre = window.opener;
 var cookie;
 window.onload = function () {
     cookie = getCookie("nombre");
+    console.log(cookie);
+    
     ventanaPadre.cargarMensaje();
     setTimeout(saludar, 5000);
-
-    document.getElementById("imprimirValor")
-            .addEventListener("click", valorCookie, false)
     document.getElementById("tiempo")
             .addEventListener("click", contador, false)
 }
 function saludar() {
     var d = new Date();
-    if (d.getHours >= 6 && d.getHours <= 14) {
+    if (d.getHours() >= 6 && d.getHours() <= 14) {
         document.getElementById("cookie").
-                innerHTML = "Buenos dias";
-    } else if (d.getHours > 14 && d.getHours < 20) {
+                innerHTML = "Buenos dias "+ cookie;
+    } else if (d.getHours() > 14 && d.getHours() < 20) {
         document.getElementById("cookie").
-                innerHTML = "Buenas tardes";
+                innerHTML = "Buenas tardes "+ cookie;
     } else {
         document.getElementById("cookie").
-                innerHTML = "Buenas noches";
+                innerHTML = "Buenas noches "+ cookie;
     }
 }
 
