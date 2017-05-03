@@ -1,6 +1,6 @@
 var cookie = document.cookie="";
+var contenedor = document.getElementById("listaPropiedades");
 window.onload = function () {
-    var contenedor = document.getElementById("listaPropiedades");
 
     var lista = document.createElement("ul");
 
@@ -71,19 +71,12 @@ window.onload = function () {
             addEventListener("click", cambiarNombrePagina, false);
     document.getElementById("ventana").
             addEventListener("click", crearVentanaNueva, false);
-    
-    setTimeout(
-            function(){
-                var cookie = getCookie("nombre");
-                console.log(cookie);
-            }, 5000);
 }
 
 function comprobarCookie (){
     if(cookie==""){
         var nombre = window.prompt("Introduce tu nombre de usuario: ")
         cookie = "nombre="+nombre;
-        console.log(cookie);
     }
     var div = document.createElement("div");
     div.innerHTML="Valor de la cookie: "+cookie;
@@ -106,5 +99,12 @@ function crearVentanaNueva(){
         var valor2 = valores.split(",")[1];
     }while(valor1 < 200 || valor1 > 800 || valor2 < 200 || valor2 > 800);
     
-    window.open("http://localhost:8383/DWCLIEN/Practica%2015/ventana.html", "nuevo", "width="+valor1+", height="+valor2+"");
+    window.open("http://localhost:8383/DWCLIEN/Practica%2015/ventana.html", "ventana", "width="+valor1+", height="+valor2+"");
+}
+function cargarMensaje(){
+    var strong = document.createElement("strong");
+    var div = document.createElement("div");
+    div.innerHTML="Ventana emergente cargada";
+    strong.appendChild(div);
+    contenedor.appendChild(strong);
 }
