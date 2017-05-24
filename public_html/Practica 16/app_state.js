@@ -44,5 +44,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     }
                 }
             })
+            .state('contacts', {
+                parent: 'app',
+                url: '^/contacts',
+                views: {
+                    'content@': {
+                        templateUrl: 'contacts.html'
+                    }
+                }
+            })
+            .state('myData', {
+                parent: 'app',
+                url: '^/myData',
+                views: {
+                    'content@': {
+                        templateUrl: 'myData.html'
+                    }
+                }
+            })
     $urlRouterProvider.otherwise('/');
 });
