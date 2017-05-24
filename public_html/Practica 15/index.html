@@ -4,6 +4,10 @@
         <title>Practica 15</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../lib/jquery-3.2.1.js" type="text/javascript"></script>
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        
     </head>
     <body>
         <div class="container text-center">
@@ -12,17 +16,22 @@
                 <button class="btn btn-default" id="comprobar">Comprobar cookie</button>
                 <button class="btn btn-default" id="nombrePagina">Cambiar nombre de página</button>
                 <button class="btn btn-default" id="ventana">Crear ventana</button>
+                <button class="btn btn-default" id="ventanaExamen">Crear ventana examen (Examen)</button>
+                <button class="btn btn-default" id="guardarTamaños">Guardar tamaños (Examen)</button>
+                <button class="btn btn-default" id="cuentaAtras">Cuenta atrás (Examen)</button>
                 <div id="valorCookie"></div>
             </div>
             <div class="row">
                 <h3>Lista de propiedades:</h3>
                 <div id="listaPropiedades"></div>
             </div>
+            <div class="row">
+                <div>
+                    <strong>(EXAMEN) Altura y anchura:</strong>
+                    <div id="propiedades"></div>
+                </div>
+            </div>
         </div>
-        
-        <script src="../bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="script.js" type="text/javascript"></script>
     </body>
 </html>

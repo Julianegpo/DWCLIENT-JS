@@ -1,5 +1,7 @@
-//var cookie = document.cookie="";
 var contenedor = document.getElementById("listaPropiedades");
+var ventanaExamen;
+var webWidth;
+var webHeight;
 window.onload = function () {
 
     var lista = document.createElement("ul");
@@ -64,65 +66,105 @@ window.onload = function () {
     lista.appendChild(random);
     lista.appendChild(nombrePagina);
     lista.appendChild(OSName);
-    
+
     document.getElementById("comprobar").
             addEventListener("click", comprobarCookie, false);
     document.getElementById("nombrePagina").
             addEventListener("click", cambiarNombrePagina, false);
     document.getElementById("ventana").
             addEventListener("click", crearVentanaNueva, false);
+    document.getElementById("ventanaExamen")
+            .addEventListener("click", crearVentanaExamen, false);
+    document.getElementById("guardarTamaños")
+            .addEventListener("click", guardarTamaños, false);
+    document.getElementById("cuentaAtras")
+            .addEventListener("click", cuentaAtras, false)
 }
 
-function comprobarCookie (){
-    if(getCookie("nombre") == ""){
+function comprobarCookie() {
+    if (getCookie("nombre") == "") {
         var nombre = window.prompt("Introduce tu nombre de usuario: ")
         setCookie("nombre", nombre, 4);
     }
     var div = document.createElement("div");
-    div.innerHTML="Valor de la cookie: "+getCookie("nombre");
+    div.innerHTML = "Valor de la cookie: " + getCookie("nombre");
     document.getElementById("valorCookie").appendChild(div);
 }
-function cambiarNombrePagina(){
+function cambiarNombrePagina() {
     var nombrePag;
     do {
-        nombrePag=window.prompt("Introduce el nuevo nombre de la página:");        
+        nombrePag = window.prompt("Introduce el nuevo nombre de la página:");
     } while (nombrePag == null || nombrePag == "");
     nombrePag.toUpperCase();
-    document.title=nombrePag;
+    document.title = nombrePag;
 }
-
-function crearVentanaNueva(){
+function crearVentanaNueva() {
     var valores;
-    do{
+    do {
         valores = window.prompt("Introduce 2 números: ");
         var valor1 = valores.split(",")[0];
         var valor2 = valores.split(",")[1];
-    }while(valor1 < 200 || valor1 > 800 || valor2 < 200 || valor2 > 800);
-    
-    window.open("http://localhost:8383/DWCLIEN/Practica%2015/ventana.html", "ventana", "width="+valor1+", height="+valor2+"");
+    } while (valor1 < 200 || valor1 > 800 || valor2 < 200 || valor2 > 800);
+    window.open("ventana.html", "ventana", "width=" + valor1 + ", height=" + valor2 + "");
 }
-function cargarMensaje(){
+function cargarMensaje() {
     var strong = document.createElement("strong");
     var div = document.createElement("div");
-    div.innerHTML="Ventana emergente cargada";
+    div.innerHTML = "Ventana emergente cargada";
     strong.appendChild(div);
     contenedor.appendChild(strong);
 }
-
 function setCookie(clave, valor, diasexpiracion) {
     var d = new Date();
-    d.setTime(d.getTime() + (diasexpiracion*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
+    d.setTime(d.getTime() + (diasexpiracion * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
     document.cookie = clave + "=" + valor + "; " + expires;
 }
-
 function getCookie(clave) {
     var name = clave + "=";
     var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+        while (c.charAt(0) == ' ')
+            c = c.substring(1);
+        if (c.indexOf(name) == 0)
+            return c.substring(name.length, c.length);
     }
     return "";
+}
+
+//examen
+function crearVentanaExamen() {
+    ventanaExamen = window.open("examen.html", "examen", "width=400,height=400");
+}
+function guardarTamaños() {
+    var webWidth = document.documentElement.clientWidth;
+    var webHeight = document.documentElement.clientWidth;
+
+    setCookie("altura", webHeight, 5);
+    setCookie("anchura", webWidth, 5);
+
+    ventanaExamen.cargarTamaños();
+}
+function cuentaAtras() {
+    var valor;
+    do {
+        valor = window.prompt("Introduce un número: ");
+    } while (valor == 0 || valor < 0);
+    setCookie("cuenta", valor, 5);
+    ventanaExamen.contador();
+}
+
+function mostrarDesdeHijo() {
+    var div = document.getElementById("propiedades");
+    var divHijo = document.createElement("div");
+    divHijo.innerHTML = "Altura: " + getCookie("altura");
+    var divHijo2 = document.createElement("div");
+    divHijo2.innerHTML = "Anchura: " + getCookie("anchura");
+
+    div.appendChild(divHijo);
+    div.appendChild(divHijo2);
+}
+function cerrarHijo(){
+    ventanaExamen.close();
 }

@@ -22,10 +22,8 @@ function saludar() {
                 innerHTML = "Buenas noches "+ cookie;
     }
 }
-
 var click = 0;
 var interval;
-
 function contador() {
     var segundo = 0;
     if (click == 0) {
@@ -40,7 +38,6 @@ function contador() {
         click = 0;
     }
 }
-
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
